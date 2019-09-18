@@ -15,7 +15,13 @@ class TreeNode:
         self.key = key
 
 def is_bst(root):
-    # Fill this in.
+    if not root:
+        return True
+    if root.left and root.left.key > root.key:
+        return False
+    if root.right and root.right.key < root.key:
+        return False
+    return is_bst(root.left) and is_bst(root.right)
 
 a = TreeNode(5)
 a.left = TreeNode(3)
