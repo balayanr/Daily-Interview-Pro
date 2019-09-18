@@ -12,7 +12,10 @@ Your solution should run in linear time and use constant space.
 """
 
 def first_missing_positive(nums):
-    # Fill this in.
+    nums = set(nums) # O(n), used to make lookup constant time
+    for i in range(1, len(nums) + 1): # O(n)
+        if i not in nums: # O(1)
+            return i
 
 print(first_missing_positive([3, 4, -1, 1]))
 # 2
