@@ -11,7 +11,19 @@ class Node():
         self.right = right
 
 def valuesAtHeight(root, height):
-    # Fill this in.
+    def inner_loop(queue, current_height):
+        if current_height == height:
+            return [item.value for item in queue]
+        new_queue = []
+        while queue:
+            node = queue.pop()
+            if node.left:
+                new_queue.append(node.left)
+            if node.right:
+                new_queue.append(node.right)
+        return inner_loop(new_queue, current_height + 1)
+
+    return inner_loop([root], 1)
 
 #     1
 #    / \
