@@ -15,7 +15,14 @@ Can you do this in a single pass?
 
 class Solution:
     def sortColors(self, nums):
-        # Fill this in.
+        counts = [0, 0, 0]
+        for num in nums:
+            counts[num] += 1
+        # do it "in place"
+        nums[:counts[0]] = [0] * counts[0]
+        nums[counts[0]:counts[0] + counts[1]] = [1] * counts[1]
+        nums[counts[0] + counts[1]:] = [2] * counts[2]
+        return nums
 
 nums = [0, 1, 2, 2, 1, 1, 2, 2, 0, 0, 0, 0, 2, 1]
 print("Before Sort: ")
